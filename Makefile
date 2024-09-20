@@ -6,7 +6,7 @@
 #    By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 13:07:20 by jaferna2          #+#    #+#              #
-#    Updated: 2024/09/20 15:02:10 by jaferna2         ###   ########.fr        #
+#    Updated: 2024/09/20 16:01:38 by jaferna2         ###   ########.fr        #
 #                                                            
 
 # Variables
@@ -43,7 +43,8 @@ SRC = main.c \
       ft_strnstr.c \
 	  ft_strdup.c \
 	  ft_substr.c \
-	  ft_strjoin.c
+	  ft_strjoin.c \
+	  ft_strtrim.c
     
 OBJS = $(SRC:.c=.o)
 

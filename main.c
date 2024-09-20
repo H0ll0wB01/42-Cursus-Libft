@@ -312,6 +312,12 @@ void check_ft_strjoin()
 	printf("ft_strjoin(%s, %s): %s\n", s1, s2, ft_strjoin(s1, s2));
 }
 
+void check_ft_strtrim()
+{
+	char const *s1 = "Hello World!";
+	char const *set = "o";
+	printf("ft_strtrim(%s, %s): %s\n", s1, set, ft_strtrim(s1, set));
+}
 int main() 
 {
     check_ft_isalpha();
@@ -339,6 +345,7 @@ int main()
 	check_ft_strdup();
 	check_ft_substr();
 	check_ft_strjoin();
+	check_ft_strtrim();
 
 	return 0;
 }

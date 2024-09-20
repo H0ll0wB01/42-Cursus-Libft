@@ -6,7 +6,7 @@
 /*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:33:58 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/09/20 14:54:01 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:38:08 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif /* LIBFT_H */
