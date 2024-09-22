@@ -38,13 +38,14 @@ SRC = main.c \
       ft_memchr.c \
       ft_calloc.c \
       ft_bzero.c \
-      ft_strchr.c \
-      ft_strrchr.c \
-      ft_strnstr.c \
-	  ft_strdup.c \
-	  ft_substr.c \
-	  ft_strjoin.c \
-	  ft_strtrim.c
+	ft_strchr.c \
+	ft_strrchr.c \
+	ft_strnstr.c \
+	ft_strdup.c \
+	ft_substr.c \
+       	ft_strjoin.c \
+	ft_strtrim.c \
+	ft_split.c
     
 OBJS = $(SRC:.c=.o)
 

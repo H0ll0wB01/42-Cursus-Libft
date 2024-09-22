@@ -126,14 +126,13 @@ void check_ft_strlcpy()
 void check_ft_strlcat()
 {
 	const char *src = "World!";
-	char dst[10] = "Hello, ";
+    char dst[15] = "Hello, ";
 
-	printf("dst before ft_strlcat: %s || ", dst);
-	size_t sol = ft_strlcat(dst, src, sizeof(src) + sizeof(dst));
-	printf("dst after ft_strlcat: %s\n", dst);
-	printf("needed length: %zu\n", sol);
+    printf("dst before ft_strlcat: '%s' || ", dst);
+    size_t sol = ft_strlcat(dst, src, sizeof(dst));
+    printf("dst after ft_strlcat: '%s'\n", dst);
+    printf("needed length: %zu\n", sol);
 }
-
 void check_ft_memset()
 {
 	char str[20] = "ABCDE";
@@ -291,6 +290,7 @@ void check_ft_strdup()
 	printf("%s bfr ft_strdup || ", n);
 	n = ft_strdup(c);
 	printf("aftr ft_strdup: %s\n", n);
+	free(n);
 }
 
 void check_ft_substr()
@@ -298,26 +298,47 @@ void check_ft_substr()
 	const char *c;
 	unsigned int st;
 	size_t l;
+	char *result;
 
 	c = "Hello World";
 	st = 8;
 	l = 9;
-	printf("ft_substr(%s,%u, %zu): %s\n", c, st, l, ft_substr(c, st, l)); 
+	result = ft_substr(c,st,l);
+	printf("ft_substr(%s,%u, %zu): %s\n", c, st, l, result); 
+	free(result);
 }
 
 void check_ft_strjoin()
 {
 	const char *s1 = "Hello";
 	const char *s2 = " World!";
-	printf("ft_strjoin(%s, %s): %s\n", s1, s2, ft_strjoin(s1, s2));
+	char *result = ft_strjoin(s1, s2);
+	printf("ft_strjoin(%s, %s): %s\n", s1, s2, result);
+	free(result);
 }
 
 void check_ft_strtrim()
 {
-	char const *s1 = "Hello World!";
-	char const *set = "o";
-	printf("ft_strtrim(%s, %s): %s\n", s1, set, ft_strtrim(s1, set));
+	char const *s1 = "*****Hello World!*****";
+	char const *set = "!H*";
+	char *result;
+	result = ft_strtrim(s1, set);
+	printf("ft_strtrim(%s, %s): %s\n", s1, set, result);
+	free(result);
 }
+
+void check_ft_split()
+{
+	char	*s =" Hello world ! ";
+	char	c = ' ';
+	char	**ar = ft_split(s, c);
+	printf("ft_split(%s, %c: \n", s, c);
+	while (*ar)
+	{
+		printf("%s\n", *ar);
+		ar++;
+	}
+}	
 int main() 
 {
     check_ft_isalpha();
@@ -346,6 +367,7 @@ int main()
 	check_ft_substr();
 	check_ft_strjoin();
 	check_ft_strtrim();
+	check_ft_split();
 
 	return 0;
 }
