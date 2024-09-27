@@ -71,10 +71,10 @@ void check_ft_tolower()
 
 void check_ft_strncmp()
 {
-	const char *s1 = "Hello World!";
-	const char *s2 = "Hello World";
+	const char *s1 = "Hello";
+	const char *s2 = "Hella";
 
-	printf("comparation %s & %s is %d\n", s1, s2, ft_strncmp(s1, s2, 12));
+	printf("comparation %s & %s is %d\n", s1, s2, ft_strncmp(s1, s2, 5));
 }
 
 void check_ft_memcmp()
@@ -83,8 +83,8 @@ void check_ft_memcmp()
 	const char *s2;
 	size_t n;
 
-	s1 = "Hello Worl";
-	s2 = "Hello World!";
+	s1 = "-1";
+	s2 = "+1";
 	n = 30;
 	if (ft_memcmp(s1, s2, n))
 		printf("%s and %s are not equals\n", s1, s2);
@@ -118,7 +118,7 @@ void check_ft_strlcpy()
 	printf("dst: %s && src: %s || ", dst, src);
 	sol = ft_strlcpy(dst, src, sizeof(dst));	
 	if(sol)
-		printf("dst after ft_srtlcpy: %s\n", dst);
+		printf("dst after ft_srtlcpy: %s || ft_strlcpy result: %zu\n", dst,sol);
 	else
 		printf("dst error");
 }
@@ -329,16 +329,89 @@ void check_ft_strtrim()
 
 void check_ft_split()
 {
-	char	*s =" Hello world ! ";
+	char	*s ="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
 	char	c = ' ';
 	char	**ar = ft_split(s, c);
-	printf("ft_split(%s, %c: \n", s, c);
-	while (*ar)
+	int		i = 0;
+	printf("ft_split(%s, %c): \n", s, c);
+	while (ar[i])
 	{
-		printf("%s\n", *ar);
-		ar++;
+		printf("%s\n", ar[i]);
+		i++;
 	}
-}	
+}
+
+void check_ft_itoa()
+{
+	printf("ft_itoa(%d): %s\n", -42, ft_itoa(-42));
+}
+
+char to_upper(unsigned int index, char c)
+{
+	(void) index;
+     return ft_toupper(c);
+}
+void check_ft_strmapi()
+{
+	char *str = "+lOrEm IpSuM";
+	char *rs = ft_strmapi(str, to_upper);
+	if (rs)
+	{
+		printf("ft_strmapi(%s, %s): %s\n",str, "ft_toupper", rs);
+		free(rs);
+	}
+}
+
+void	change_to_lower(unsigned int index, char *c)
+{
+	(void) index;
+	if (*c >= 'A' && *c <= 'Z')
+		*c += 32;
+}
+
+void check_ft_striteri()
+{
+	char str[] = "HELLO WORLD!";
+	printf("/* striteri test */\n");
+	printf("Original string: %s || ", str);
+	ft_striteri(str, change_to_lower);
+	printf("Modified string: %s\n", str);
+}
+
+void check_ft_putchar_fd()
+{
+	char c;
+
+	c = 'c';
+	ft_putchar_fd(c, 1);
+	ft_putchar_fd('\n', 1);
+}
+
+void check_ft_putstr_fd()
+{
+	char *str;
+
+	str = "Hello World!\n";
+	ft_putstr_fd(str, 1);
+}
+
+void check_ft_putendl_fd()
+{
+	char *str;
+
+	str = "Hello World!";
+	ft_putendl_fd(str, 1);
+}
+
+void check_ft_putnbr_fd()
+{
+	int	n;
+
+	n = -42;
+	ft_putnbr_fd(n, 1);
+	write (1, "\n", 1);
+}
+
 int main() 
 {
     check_ft_isalpha();
@@ -368,7 +441,13 @@ int main()
 	check_ft_strjoin();
 	check_ft_strtrim();
 	check_ft_split();
+	check_ft_itoa();
+	check_ft_strmapi();
+	check_ft_striteri();
+	check_ft_putchar_fd();
+	check_ft_putstr_fd();
+	check_ft_putendl_fd();
+	check_ft_putnbr_fd();
 
 	return 0;
 }
-

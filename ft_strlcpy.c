@@ -6,7 +6,7 @@
 /*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 09:34:16 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/09/18 14:21:54 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:40:54 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,18 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
+	size_t	slen;
 
 	i = 0;
-	while (src[i])
-		i++;
-	if (!(i) || !(size))
-		return (size);
-	else
+	slen = ft_strlen(src);
+	if (!size)
+		return (slen);
+	while (i < size -1 && src[i])
 	{
-		i = 0;
-		while (src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-		return (i);
+		dst[i] = src[i];
+		i++;
 	}
+	if (size > 0)
+		dst[i] = '\0';
+	return (slen);
 }

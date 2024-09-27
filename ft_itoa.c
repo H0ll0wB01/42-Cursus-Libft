@@ -1,31 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 15:46:45 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/09/25 15:10:22 by jaferna2         ###   ########.fr       */
+/*   Created: 2024/09/23 12:55:00 by jaferna2          #+#    #+#             */
+/*   Updated: 2024/09/26 10:04:59 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+static size_t	ncount(int n)
 {
 	size_t	i;
 
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] && s2[i] && i < n)
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	if (n <= 0)
 		i++;
+	while (n != 0)
+	{
+		i++;
+		n /= 10;
 	}
-	if (i < n)
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	return (0);
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*ns;
+	size_t	i;
+	size_t	z;
+	long	temp_n;
+
+	z = ncount(n);
+	temp_n = n;
+	ns = (char *)malloc((z + 1) * sizeof(char));
+	if (!ns)
+		return (NULL);
+	i = z;
+	if (n < 0)
+		temp_n *= -1;
+	ns[z] = '\0';
+	if (n == 0)
+		ns[--i] = '0';
+	while (temp_n > 0)
+	{
+		ns[--i] = (temp_n % 10) + 48;
+		temp_n /= 10;
+	}
+	if (n < 0)
+		ns[--i] = '-';
+	return (ns);
 }
