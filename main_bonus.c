@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "libft_bonus.h"
 
 void check_ft_lstnew_bonus()
 {
@@ -102,14 +102,13 @@ void	check_ft_lstdelone()
     t_list *node = ft_lstnew(str);
 	printf("content node: %s || next node: %p\n", (char *)node->content, node->next);
     ft_lstdelone(node, my_del);
-	printf("deleting node\n");
-	printf("content node: %s || next node: %p\n", (char *)node->content, node->next);
+	printf("node deleted\n");
 }
 
 void	check_ft_lstclear()
 {
 	printf("/* ft_lstclear check */\n");
-t_list *list = ft_lstnew(strdup("Node 1"));
+	t_list *list = ft_lstnew(strdup("Node 1"));
     list->next = ft_lstnew(strdup("Node 2"));
     list->next->next = ft_lstnew(strdup("Node 3"));
     printf("Original list:\n");
@@ -133,6 +132,80 @@ t_list *list = ft_lstnew(strdup("Node 1"));
     }
 }
 
+void	ft_modify_list_with_d(void *elem)
+{
+	int		len;
+	char	*content;
+
+	len = 0;
+	content = (char *)elem;
+	while (content[len])
+	{
+		content[len++] = 'd';
+	}
+}
+
+void	check_ft_lstiter()
+{
+	printf("/* ft_lstiter check */\n");
+	t_list *node = ft_lstnew(strdup("Node01"));
+	node->next = ft_lstnew(strdup("Node02"));
+	node->next->next = ft_lstnew(strdup("Node03"));
+	printf("Originl list:\n");
+	t_list *temp = node;
+	while (temp)
+	{
+		printf("%s ", (char *)temp->content);
+		temp = temp->next;
+	}
+	printf("\n");
+	ft_lstiter(node, ft_modify_list_with_d);
+	printf("Apply function iter\n");
+	if (node->content)
+	{	
+		t_list *temp = node;
+		while (temp)
+		{
+			printf("%s ", (char *)temp->content);
+			temp = temp->next;
+		}
+	}
+	printf("\n");
+}
+
+void	*modify_with_s(void *content)
+{
+	(void)content;
+	char *new_content = strdup("ssssss");
+	return new_content;
+}
+void	check_ft_lstmap()
+{
+	printf("/* ft_lstmap check */\n");
+	t_list *node = ft_lstnew(strdup("Node01"));
+	node->next = ft_lstnew(strdup("Node02"));
+	node->next->next = ft_lstnew(strdup("Node03"));
+	printf("Originl list:\n");
+	t_list *temp = node;
+	while (temp)
+	{
+		printf("%s ", (char *)temp->content);
+		temp = temp->next;
+	}
+	printf("\n");
+	
+	t_list *new_lst = ft_lstmap(node, modify_with_s, my_del);	
+	printf("Apply function map\n");
+	while (new_lst)
+	{
+		printf("%s ",(char *)new_lst->content);
+		new_lst = new_lst->next;
+	
+	}
+	printf("\n");
+
+}
+
 int	main (void)
 {
 	check_ft_lstnew_bonus();
@@ -142,6 +215,8 @@ int	main (void)
 	check_ft_lstadd_back();
 	check_ft_lstdelone();
 	check_ft_lstclear();
+	check_ft_lstiter();
+	check_ft_lstmap();
 
 	return (0);
 }

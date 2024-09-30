@@ -6,7 +6,7 @@
 /*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:46:32 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/09/26 15:44:10 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:06:21 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!st || !new)
+	if (!lst || !new)
 		return ;
 	new->next = *lst;
-	*lst = next;
+	*lst = new;
 }

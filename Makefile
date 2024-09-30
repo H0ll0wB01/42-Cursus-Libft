@@ -1,10 +1,8 @@
 NAME = libft
 COMP_NAME = libft
 
-# Compiler to use 
 CC = cc
 
-# Source files for the main library (excluding main.c)
 CFILES = ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
@@ -40,65 +38,50 @@ CFILES = ft_isalpha.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c
 
-# Bonus source files
-BONUS_CFILES = ft_lstnew.c	\
-	ft_lstadd_front.c	\
-	ft_lstsize.c	\
-	ft_lstlast.c	\
-	ft_lstadd_back.c	\
-	ft_lstdelone.c	\
-	ft_lstclear.c	
+BONUS_CFILES = ft_lstnew_bonus.c	\
+	ft_lstadd_front_bonus.c	\
+	ft_lstsize_bonus.c	\
+	ft_lstlast_bonus.c	\
+	ft_lstadd_back_bonus.c	\
+	ft_lstdelone_bonus.c	\
+	ft_lstclear_bonus.c	\
+	ft_lstiter_bonus.c	\
+	ft_lstmap_bonus.c
 
 HEADER_DIR = ./includes
 
-# Object files
 OBJS = $(CFILES:.c=.o)
 BONUS_OBJ = $(BONUS_CFILES:.c=.o)
 
-# Compiler flags
 CFLAGS = -Wall -Wextra -Werror -I $(HEADER_DIR)
 
-# Default rule
 all: $(NAME)
 
-# Main library compilation
 $(NAME): $(OBJS)
-	@echo "Compiling $(NAME) and creating object files..."
 	ar rcs $(NAME).a $(OBJS)
 
-# Cleaning object files
 clean:
-	@echo "Removing object files..."
 	rm -f $(OBJS) $(BONUS_OBJ)
+	rm -f ./test_program
+	rm -f ./test_bonus_program
 
-# Full clean: removing object files and the library
 fclean: clean
-	@echo "Removing $(NAME).a..."
 	rm -f $(NAME).a
 
-# Rebuild everything
 re: fclean all
 
-# Rule to test the main program
 test: $(NAME) main.o
-	@echo "Creating test executable..."
 	$(CC) $(CFLAGS) -o test_program main.o $(NAME).a
-	@echo "Running test executable..."
 	@./test_program
-	rm -f test_program
+	rm -f ./test_program
 
-# Bonus rule to include bonus files in libft.a
-bonus: $(OBJS) $(BONUS_OBJ)
-	@echo "Compiling bonus object files and adding to $(NAME).a..."
-	ar rcs $(NAME).a $(OBJS) $(BONUS_OBJ)
+bonus: $(BONUS_OBJ)
+	ar rcs $(NAME).a $(BONUS_OBJ)
 
-# Rule to test the bonus program
 bonus_test: bonus main_bonus.o
-	@echo "Creating bonus test executable..."
 	$(CC) $(CFLAGS) -o test_bonus_program main_bonus.o $(NAME).a
-	@echo "Running bonus test executable..."
 	@./test_bonus_program
 	rm -f test_bonus_program
 
-# Avoid make treating clean, fclean, etc., as files
 .PHONY: all clean fclean re test bonus bonus_test
+

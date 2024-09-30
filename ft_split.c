@@ -6,7 +6,7 @@
 /*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 09:43:01 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/09/25 16:47:27 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:27:53 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,20 @@ static	size_t	word_count(char const *s, char c)
 	return (wordnum);
 }
 
-static	void	fill_ar(char **ar, char const *s, char c, size_t wordnum)
+static	void	free_ar(char **ar)
+{
+	size_t	i;
+
+	i = 0;
+	while (ar[i])
+	{
+		free(ar[i]);
+		i++;
+	}
+	free(ar);
+}
+
+static	int	fill_ar(char **ar, char const *s, char c, size_t wordnum)
 {
 	size_t	i;
 	size_t	word_init;
@@ -51,10 +64,15 @@ static	void	fill_ar(char **ar, char const *s, char c, size_t wordnum)
 		if (i > word_init)
 		{
 			ar[word_indx] = ft_substr(s, word_init, i - word_init);
-			ar[word_indx][ft_strlen(ar[word_indx])] = '\0';
+			if (!ar[word_indx])
+			{
+				free_ar(ar);
+				return (0);
+			}
 			word_indx++;
 		}
 	}
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -68,7 +86,8 @@ char	**ft_split(char const *s, char c)
 	ar = malloc((words + 1) * sizeof(char *));
 	if (!ar)
 		return (NULL);
-	fill_ar(ar, s, c, words);
+	if (!fill_ar(ar, s, c, words))
+		return (NULL);
 	ar[words] = NULL;
 	return (ar);
 }
