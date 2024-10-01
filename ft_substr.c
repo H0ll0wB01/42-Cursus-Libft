@@ -6,7 +6,7 @@
 /*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 14:09:07 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/09/25 15:37:50 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:25:30 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	size_t	j;
 
+	if (!s)
+		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup("\0"));
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
 	ns = (char *) malloc((len + 1) * sizeof(char));
 	if (!ns)
 		return (NULL);

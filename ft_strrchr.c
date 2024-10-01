@@ -6,7 +6,7 @@
 /*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 15:35:23 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/09/20 12:54:09 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/10/01 10:03:14 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strrchr(const char *s, int c)
 		i++;
 	while (i >= 0)
 	{
-		if (p[i] == c)
+		if (p[i] == (char)c)
 			return (&p[i]);
 		i--;
 	}

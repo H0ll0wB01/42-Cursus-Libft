@@ -1,5 +1,4 @@
-NAME = libft
-COMP_NAME = libft
+NAME = libft.a
 
 CC = cc
 
@@ -58,28 +57,32 @@ CFLAGS = -Wall -Wextra -Werror -I $(HEADER_DIR)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME).a $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
 	rm -f $(OBJS) $(BONUS_OBJ)
 	rm -f ./test_program
 	rm -f ./test_bonus_program
+	rm -f .b
 
 fclean: clean
-	rm -f $(NAME).a
+	rm -f $(NAME)
 
 re: fclean all
 
 test: $(NAME) main.o
-	$(CC) $(CFLAGS) -o test_program main.o $(NAME).a
+	$(CC) $(CFLAGS) -o test_program main.o $(NAME)
 	@./test_program
 	rm -f ./test_program
 
-bonus: $(BONUS_OBJ)
-	ar rcs $(NAME).a $(BONUS_OBJ)
+bonus: .b
+
+.b: $(OBJS) $(BONUS_OBJ)
+	ar rcs $(NAME) $(OBJS) $(BONUS_OBJ)
+	touch .b
 
 bonus_test: bonus main_bonus.o
-	$(CC) $(CFLAGS) -o test_bonus_program main_bonus.o $(NAME).a
+	$(CC) $(CFLAGS) -o test_bonus_program main_bonus.o $(NAME)
 	@./test_bonus_program
 	rm -f test_bonus_program
 
