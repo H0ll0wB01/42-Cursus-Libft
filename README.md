@@ -1,5 +1,5 @@
 
-# 42_Cursus_libft.c
+# 42-Cursus-libft.c
 
 Este proyecto compila diversas funciones de la biblioteca estándar de C, junto con algunas funciones adicionales que enriquecen su funcionalidad. Las funciones que se denominan con el prefijo _bonus están específicamente diseñadas para facilitar el manejo de listas enlazadas, proporcionando así una herramienta más versátil y eficiente para la gestión de estructuras de datos en este lenguaje.
 
