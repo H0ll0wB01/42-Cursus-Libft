@@ -24,7 +24,4 @@ Los siguientes comandos deben ser ejecutados en la terminal, dentro del director
 
 - [@H0ll0wB01](https://github.com/H0ll0wB01)
 
-<div style="text-align: center; background-color: white; padding: 20px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/42_Logo.svg/400px-42_Logo.svg.png" alt="Logo" style="background-color: white;">
-</div>
-
+![Logo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVInHuUPtp3uiEuvF0aYAkFBUzpnr65b2CDA&s)
