@@ -25,8 +25,10 @@ Los siguientes comandos deben ser ejecutados en la terminal, dentro del director
 
 <div align="center">
   <img src="https://avatars.githubusercontent.com/u/102600920?v=4" alt="Logo" width="200"/>
-  <br/> 
+  <br/>
+  <div style="margin: 20px 0 30px;">
   <a href="https://github.com/H0ll0wB01">Javier Fernández Correa</a>
+  </div>
 </div>
 <div align="center">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVInHuUPtp3uiEuvF0aYAkFBUzpnr65b2CDA&s" alt="Logo"/>
